@@ -30,7 +30,7 @@ const index = () => {
     completeShipment,
     getShipment,
     startShipment,
-    getShipmentCount,
+    getShipmentsCount,
   } = useContext(TrackingContext);
 
   //State Variable
@@ -43,11 +43,11 @@ const index = () => {
   // Data State Variable
   const [allShipmentsData, setallShipmentsData] = useState();
   useEffect(() => {
-    const getCampaignsData = getAllShipment();
-    return async () => {
-      const allData = await getCampaignsData;
+    async function fetchData() {
+      const allData = await getAllShipment();
       setallShipmentsData(allData);
-    };
+    }
+    fetchData();
   }, []);
 
     return (
@@ -71,7 +71,7 @@ const index = () => {
           openProfile = {openProfile}
           setOpenProfile = {setOpenProfile}
           currentUser = {currentUser}
-          getShipmentCount = {getShipmentCount}
+          getShipmentsCount = {getShipmentsCount}
         />
         <CompleteShipment
           completeModal = {completeModal}
