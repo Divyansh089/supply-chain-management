@@ -4,7 +4,7 @@ import {ethers} from "ethers";
 
 //Internal Import
 import tracking from "../Context/Tracking.json";
-const ContractAddress = " 0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const ContractAddress = "0xae3F29b8782DB1132aD8D4505075830f96E584b2";
 const ContractABI = tracking.abi;
 
 //Fetching Smart Contract
@@ -15,10 +15,11 @@ export const TrackingContext = React.createContext();
 export const TrackingProvider = ({children}) => {
     //State Variable
     const DappName  = "Product Tracking Dapp";
+    console.log(DappName);
     const [currentUser , setCurrentUser] = useState("");
 
     const createShipment = async (items) => {
-        console.log(items);
+        console.log("Items :",items);
         const {receiver , pickupTime , distance , price} = items;
 
         try {
@@ -26,7 +27,9 @@ export const TrackingProvider = ({children}) => {
             const connection  = await web3Modal.connect();
             const provider = new ethers.providers.Web3Provider(connection);
             const signer = provider.getSigner();
+            console.log(signer);
             const contract = fetchContract(signer);
+            console.log(contract);
             const createItem = await contract.createShipment(
                 receiver,
                 new Date(pickupTime).getTime(),
@@ -205,6 +208,7 @@ export const TrackingProvider = ({children}) => {
                 connectWallet,
                 createShipment,
                 getAllShipment,
+                
                 completeShipment,
                 getShipment,
                 startShipment,

@@ -1,6 +1,6 @@
 
 
-export default ({ setCreateShipmentModel , allShipmentsdata}) => {
+export default ({ setCreateShipmentModal , allShipmentsdata}) => {
   const converTime = (time) => {
     const newTime = new Date(time);
     const dataTime = new Intl.DateTimeFormat("en-us", {
@@ -25,7 +25,7 @@ export default ({ setCreateShipmentModel , allShipmentsdata}) => {
           </p>
         </div>
         <div className="mt-3 md:mt-8">
-          <p onClick={() => setCreateShipmentModel(true)} href="javascript:void(0)" className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex">Add Tracking</p>
+          <p onClick={() => setCreateShipmentModal(true)} href="javascript:void(0)" className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex">Add Tracking</p>
         </div>
       </div>
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
@@ -43,7 +43,7 @@ export default ({ setCreateShipmentModel , allShipmentsdata}) => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {allShipmentsdata?.map ((shipment , idx) => {
+            {allShipmentsdata?.map((shipment , idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.sender.slice(0,15)}...
@@ -70,7 +70,7 @@ export default ({ setCreateShipmentModel , allShipmentsdata}) => {
                   {shipment.status == 0? "Pending" : shipment.status == 1 ? "IN_TRANSIT" : "Delivered"}
                 </td>
               </tr>
-            })}
+            ))}
           </tbody>
         </table>
       </div>
