@@ -19,7 +19,7 @@
 
 
 const hre = require("hardhat");
-const { ethers } = hre;
+
 
 async function main() {
   // Create a provider for your local Hardhat node
@@ -30,7 +30,7 @@ async function main() {
     console.log("Chain ID:", network.chainId);
 
   // Deploy your Tracking contract
-    const Tracking = await ethers.getContractFactory("Tracking");
+    const Tracking = await hre.ethers.getContractFactory("Tracking");
     const tracking = await Tracking.deploy();
     await tracking.deployed();
     console.log(`Tracking contract deployed to: ${tracking.address}`);

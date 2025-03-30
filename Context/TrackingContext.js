@@ -3,8 +3,8 @@ import Web3Modal from "web3modal";
 import {ethers} from "ethers";
 
 //Internal Import
-import tracking from "../Context/Tracking.json";
-const ContractAddress = "0xae3F29b8782DB1132aD8D4505075830f96E584b2";
+import tracking from "../artifacts/contracts/Tracking.sol/Tracking.json";
+const ContractAddress = "0x610178dA211FEF7D417bC0e6FeD39F05609AD788";
 const ContractABI = tracking.abi;
 
 //Fetching Smart Contract
@@ -40,7 +40,7 @@ export const TrackingProvider = ({children}) => {
                 }
             );
             await createItem.wait();
-            console.log(createItem);
+            console.log("Items are created" + createItem);
         } catch (error){
             console.log("Some want wrong",error);
         }
@@ -48,10 +48,15 @@ export const TrackingProvider = ({children}) => {
 
     const getAllShipment = async () => {
         try {
-            const provider  = new ethers.providers.JsonRpcProvider();
+            const provider  = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545");
             const contract = fetchContract (provider);
-
+            provider.getNetwork().then(network => {
+                console.log("Connected Network:", network.name);
+                console.log("Chain ID:", network.chainId);
+            });
+            console.log("Get all shipments function : " + contract);
             const shipments = await contract.getAllTransactions();
+            console.log("Shipments: " + shipments.length);
             const allShipments = shipments.map((shipment) => ({
                 sender:shipment.sender,
                 receiver: shipment.receiver,
@@ -64,7 +69,7 @@ export const TrackingProvider = ({children}) => {
             }));
             return allShipments;
         } catch(error){
-            console.log("error want , getting shipment");
+            console.log("error want , getting shipment" , error);
         }
     };
     const getShipmentsCount = async () => {
@@ -114,7 +119,7 @@ export const TrackingProvider = ({children}) => {
     };
 
     const getShipment = async (index) => {
-        console.log(index *1 );
+        console.log(index * 1 );
         try {
             if(!window.ethereum) return "Install MetaMask";
             const accounts = await window.ethereum.request({
@@ -135,6 +140,7 @@ export const TrackingProvider = ({children}) => {
                 isPaid: shipment[7],
                 
             };
+            console.log("Single Shipment" , SingleShipment);
             return SingleShipment;
         } catch(error){
             console.log("Sorry no shipment");

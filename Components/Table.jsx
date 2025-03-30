@@ -1,6 +1,6 @@
 
 
-export default ({ setCreateShipmentModal , allShipmentsdata}) => {
+export default ({ setCreateShipmentModal , allShipmentsData}) => {
   const converTime = (time) => {
     const newTime = new Date(time);
     const dataTime = new Intl.DateTimeFormat("en-us", {
@@ -11,7 +11,7 @@ export default ({ setCreateShipmentModal , allShipmentsdata}) => {
     return dataTime;
   };
 
-  console.log(allShipmentsdata);
+  console.log("Table Comp render Data Set" ,allShipmentsData);
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -43,7 +43,7 @@ export default ({ setCreateShipmentModal , allShipmentsdata}) => {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {allShipmentsdata?.map((shipment , idx) => (
+            {allShipmentsData?.map((shipment , idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.sender.slice(0,15)}...
@@ -61,7 +61,7 @@ export default ({ setCreateShipmentModal , allShipmentsdata}) => {
                   {shipment.price}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {shipment.deliveryTime}                
+                  {converTime(shipment.deliveryTime)}                
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.isPaid? 'Completed' : 'Not Complete'}
