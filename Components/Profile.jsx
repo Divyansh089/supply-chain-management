@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ethers } from "ethers";
-
-// INTERNAL IMPORT
 import images from "../Images/index";
 
-export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount }) => {
+export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount, refreshFlag }) => {
   const [count, setCount] = useState();
   const [balance, setBalance] = useState("");
 
-  // Fetch shipment count from the contract
+  // Fetch shipment count from the contract when refreshFlag changes
   useEffect(() => {
     async function fetchShipmentCount() {
       if (getShipmentsCount) {
-        const allData = await getShipmentsCount();
-        setCount(allData);
+        try {
+          const total = await getShipmentsCount();
+          console.log("Shipment Count:", total);
+          setCount(total);
+        } catch (error) {
+          console.error("Error fetching shipment count:", error);
+        }
       }
     }
     fetchShipmentCount();
-  }, [getShipmentsCount]);
+  }, [refreshFlag, getShipmentsCount]);
 
   // Fetch the user's account balance
   useEffect(() => {

@@ -29,20 +29,20 @@ const IndexPage = () => {
   const [completeModal, setCompleteModal] = useState(false);
   const [getModal, setGetModal] = useState(false);
 
+  // Data state for shipments and refresh flag for auto-reload
   const [allShipmentsData, setAllShipmentsData] = useState([]);
-
   const [refreshFlag, setRefreshFlag] = useState(false);
 
-  // Data variables and refresh function
+  // Fetch shipments when refreshFlag changes
   useEffect(() => {
     async function fetchShipments() {
       const allData = await getAllShipment();
       setAllShipmentsData(allData);
-      console.log("All Shipments Data:", allData);
     }
     fetchShipments();
   }, [refreshFlag, getAllShipment]);
 
+  // Callback to refresh shipments
   const refreshShipments = () => {
     setRefreshFlag((prev) => !prev);
   };
@@ -73,6 +73,7 @@ const IndexPage = () => {
         setOpenProfile={setOpenProfile}
         currentUser={currentUser}
         getShipmentsCount={getShipmentsCount}
+        refreshFlag={refreshFlag} // Pass the refresh flag so Profile auto-updates
       />
       <CompleteShipment
         completeModal={completeModal}

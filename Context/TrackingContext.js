@@ -15,11 +15,9 @@ export const TrackingContext = React.createContext();
 export const TrackingProvider = ({children}) => {
     //State Variable
     const DappName  = "Product Tracking Dapp";
-    console.log(DappName);
     const [currentUser , setCurrentUser] = useState("");
 
     const createShipment = async (items) => {
-        console.log("Items :",items);
         const {receiver , pickupTime , distance , price} = items;
 
         try {
@@ -27,9 +25,7 @@ export const TrackingProvider = ({children}) => {
             const connection  = await web3Modal.connect();
             const provider = new ethers.providers.Web3Provider(connection);
             const signer = provider.getSigner();
-            console.log(signer);
             const contract = fetchContract(signer);
-            console.log(contract);
             const createItem = await contract.createShipment(
                 receiver,
                 new Date(pickupTime).getTime(),
@@ -40,7 +36,6 @@ export const TrackingProvider = ({children}) => {
                 }
             );
             await createItem.wait();
-            console.log("Items are created" + createItem);
         } catch (error){
             console.log("Some want wrong",error);
         }
@@ -50,13 +45,7 @@ export const TrackingProvider = ({children}) => {
         try {
             const provider  = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545");
             const contract = fetchContract (provider);
-            provider.getNetwork().then(network => {
-                console.log("Connected Network:", network.name);
-                console.log("Chain ID:", network.chainId);
-            });
-            console.log("Get all shipments function : " + contract);
             const shipments = await contract.getAllTransactions();
-            console.log("Shipments: " + shipments.length);
             const allShipments = shipments.map((shipment) => ({
                 sender:shipment.sender,
                 receiver: shipment.receiver,
@@ -112,7 +101,6 @@ export const TrackingProvider = ({children}) => {
                 }
             );
             await transaction.wait();
-            console.log(transaction);
         } catch (error){
             console.log("Wrong complete shipment", error);
         }
@@ -140,7 +128,6 @@ export const TrackingProvider = ({children}) => {
                 isPaid: shipment[7],
                 
             };
-            console.log("Single Shipment" , SingleShipment);
             return SingleShipment;
         } catch(error){
             console.log("Sorry no shipment");
@@ -167,7 +154,6 @@ export const TrackingProvider = ({children}) => {
                 
             );
             shipment.wait();
-            console.log(shipment);
         } catch(error){
             console.log("Sorry no shipment" ,error);
         }

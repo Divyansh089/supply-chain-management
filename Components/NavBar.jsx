@@ -5,10 +5,8 @@ import Nav1  from "../Components/SVG/Nav1";
 import Nav2  from "../Components/SVG/Nav2";
 import Nav3  from "../Components/SVG/Nav3";
 
-// console.log("TrackingContext:", TrackingContext);
-// console.log("Nav1:", Nav1);
-// console.log("Nav2:", Nav2);
-// console.log("Nav3:", Nav3);
+
+
 
 const NavBar = () => {
   const [state , setState] = useState(false);
@@ -36,9 +34,9 @@ const NavBar = () => {
     >
       <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
         <div className="flex items-center justify-between py-5 md:block">
-          <a href="javascript:void(0)">
-            <img src="https://www.floatui.com/logo.svg" width={120} height={50} alt="Float UI Logo" />
-          </a>
+          <div >
+            <img src="/logo.png" alt="Logo" className="w-32 h-100 object-contain"/>
+          </div>
           <div className='md:hidden'>
             <button 
             className='menu-btn text-gray-500 hover:text-gray-800' onClick={() => setState(!state)}>

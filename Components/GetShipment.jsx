@@ -7,10 +7,7 @@ export default ({ getModal, setGetModal, getShipment }) => {
   const getShipmentData = async () => {
     const getData = await getShipment(index);
     setShipmentData(getData);
-    console.log(getData);
   };
-
-  console.log(singleShipmentData);
 
   const converTime = (time) => {
     const newTime = new Date(time);
@@ -85,7 +82,7 @@ export default ({ getModal, setGetModal, getShipment }) => {
                   PickupTime: {converTime(singleShipmentData.pickupTime)}
                 </p>
                 <p>
-                  DeliveryTime: {converTime(singleShipmentData.deliveryTime)}
+                  DeliveryTime: {converTime(singleShipmentData.pickupTime + singleShipmentData.deliveryTime)}
                 </p>
                 <p>Distance: {singleShipmentData.distance}</p>
                 <p>Price: {singleShipmentData.price}</p>

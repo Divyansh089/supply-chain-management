@@ -15,7 +15,6 @@ export default ({
   const [alertMessage, setAlertMessage] = useState("");
 
   const createItem = async () => {
-    console.log("createItem triggered with shipment:", shipment);
     setLoading(true);
     try {
       await createShipment(shipment);

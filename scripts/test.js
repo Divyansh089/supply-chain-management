@@ -18,8 +18,11 @@ async function main() {
     const contract = new ethers.Contract(contractAddress, ContractABI, provider);
   
     // Call the getAllTransactions function
-    const transactions = await contract.getAllTransactions();
-    console.log("All Transactions:", transactions);
+    // const transactions = await contract.getAllTransactions();
+    // console.log("All Transactions:", transactions);
+    // Call the getTransactionCount function
+    const count = await contract.getShipmentCount("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
+    console.log("Total Shipments Count" , count);
   }
   
   main()
