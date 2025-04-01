@@ -73,7 +73,7 @@ const IndexPage = () => {
         setOpenProfile={setOpenProfile}
         currentUser={currentUser}
         getShipmentsCount={getShipmentsCount}
-        refreshFlag={refreshFlag} // Pass the refresh flag so Profile auto-updates
+        refreshFlag={refreshFlag} 
       />
       <CompleteShipment
         completeModal={completeModal}

@@ -3,17 +3,16 @@ import Image from "next/image";
 import { ethers } from "ethers";
 import images from "../Images/index";
 
-export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount, refreshFlag }) => {
+const Profile = ({ openProfile, setOpenProfile, currentUser, getShipmentsCount, refreshFlag }) => {
   const [count, setCount] = useState();
   const [balance, setBalance] = useState("");
 
-  // Fetch shipment count from the contract when refreshFlag changes
+  // Fetch shipment count whenever refreshFlag or getShipmentsCount changes
   useEffect(() => {
     async function fetchShipmentCount() {
       if (getShipmentsCount) {
         try {
           const total = await getShipmentsCount();
-          console.log("Shipment Count:", total);
           setCount(total);
         } catch (error) {
           console.error("Error fetching shipment count:", error);
@@ -23,7 +22,7 @@ export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount, r
     fetchShipmentCount();
   }, [refreshFlag, getShipmentsCount]);
 
-  // Fetch the user's account balance
+  // Fetch user's account balance whenever currentUser or refreshFlag changes
   useEffect(() => {
     async function fetchBalance() {
       if (currentUser && window.ethereum) {
@@ -33,7 +32,7 @@ export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount, r
       }
     }
     fetchBalance();
-  }, [currentUser]);
+  }, [currentUser, refreshFlag]);
 
   return openProfile ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -98,3 +97,5 @@ export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount, r
     ""
   );
 };
+
+export default Profile;

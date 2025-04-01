@@ -60,7 +60,7 @@ export default ({
               Track product, Create Shipment
             </h4>
             <p className="text-[15px] text-gray-600">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Easily create and monitor your shipments in real-time. Secure your supply chain with transparency and efficiency."
             </p>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="relative mt-3">

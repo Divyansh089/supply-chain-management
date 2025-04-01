@@ -4,7 +4,7 @@ import {ethers} from "ethers";
 
 //Internal Import
 import tracking from "../artifacts/contracts/Tracking.sol/Tracking.json";
-const ContractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const ContractAddress = "0xf21d32Cf0a79c892a63844A0aAb35cfEcBEe7b1D";
 const ContractABI = tracking.abi;
 
 //Fetching Smart Contract
@@ -43,7 +43,7 @@ export const TrackingProvider = ({children}) => {
 
     const getAllShipment = async () => {
         try {
-            const provider  = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545");
+            const provider  = new ethers.providers.JsonRpcProvider("https://ethereum-holesky.publicnode.com");
             const contract = fetchContract (provider);
             const shipments = await contract.getAllTransactions();
             const allShipments = shipments.map((shipment) => ({
@@ -63,19 +63,24 @@ export const TrackingProvider = ({children}) => {
     };
     const getShipmentsCount = async () => {
         try {
-            if(!window.ethereum) return "Install MetaMask";
-            const accounts = await window.ethereum.request({
-                method: "eth_accounts",
-            });
-            
-            const provider = new ethers.providers.JsonRpcProvider();
+            if (!window.ethereum) {
+                console.log("window.ethereum not available");
+                return "Install MetaMask";
+            }
+            const accounts = await window.ethereum.request({ method: "eth_accounts" });
+            if (accounts.length === 0) {
+                console.log("No accounts found");
+                return 0;
+            }
+            const provider = new ethers.providers.JsonRpcProvider("https://ethereum-holesky.publicnode.com");
             const contract = fetchContract(provider);
-            const shipmentCount = await contract.getShipmentsCount(accounts[0]);
+            const shipmentCount = await contract.getShipmentCount(accounts[0]);
             return shipmentCount.toNumber();
-        } catch(error){
-            console.log("error want , getting shipment");
+        } catch (error) {
+            console.log("Error getting shipment count:", error);
         }
     };
+    
 
     const completeShipment = async (completeShip) => {
         console.log(completeShip);
@@ -113,7 +118,7 @@ export const TrackingProvider = ({children}) => {
             const accounts = await window.ethereum.request({
                 method: "eth_accounts",
             });
-            const provider = new ethers.providers.JsonRpcProvider();
+            const provider = new ethers.providers.JsonRpcProvider("https://ethereum-holesky.publicnode.com");
             const contract = fetchContract(provider);
             const shipment = await contract.getShipment(accounts[0], index * 1);
 
@@ -128,9 +133,10 @@ export const TrackingProvider = ({children}) => {
                 isPaid: shipment[7],
                 
             };
+            console.log("shipment details:" ,SingleShipment);
             return SingleShipment;
         } catch(error){
-            console.log("Sorry no shipment");
+            console.log("Sorry no shipment" , error);
         }
     };
 

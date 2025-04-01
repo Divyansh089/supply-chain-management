@@ -82,7 +82,7 @@ export default ({ getModal, setGetModal, getShipment }) => {
                   PickupTime: {converTime(singleShipmentData.pickupTime)}
                 </p>
                 <p>
-                  DeliveryTime: {converTime(singleShipmentData.pickupTime + singleShipmentData.deliveryTime)}
+                  DeliveryTime: {converTime(singleShipmentData.pickupTime + singleShipmentData.distance *60)}
                 </p>
                 <p>Distance: {singleShipmentData.distance}</p>
                 <p>Price: {singleShipmentData.price}</p>

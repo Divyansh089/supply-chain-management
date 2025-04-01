@@ -11,8 +11,6 @@ export default ({ setCreateShipmentModal , allShipmentsData}) => {
     return dataTime;
   };
 
-  console.log("Table Comp render Data Set" ,allShipmentsData);
-
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
       <div className="items-start justify-between md:flex">
@@ -61,7 +59,7 @@ export default ({ setCreateShipmentModal , allShipmentsData}) => {
                   {shipment.price}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {converTime(shipment.deliveryTime)}                
+                  {converTime(shipment.pickupTime + shipment.distance *60)}                
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.isPaid? 'Completed' : 'Not Complete'}

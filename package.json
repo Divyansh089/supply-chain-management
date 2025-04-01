@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.2.4",
+    "dotenv": "^16.4.7",
     "ethers": "^5.7.2",
     "hardhat": "^2.22.19",
     "next": "13.2.4",
