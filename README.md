@@ -1,124 +1,82 @@
-# Building and Deploying a Blockchain Supply Chain Management DApp
+# ⚡ QuickSafe - Decentralized Supply Chain Management DApp
 
-Building and Deploying a Blockchain Supply Chain Management DApp
+Welcome to **QuickSafe**, a modern decentralized application (DApp) that redefines how supply chains are managed. Leveraging the transparency and immutability of **Ethereum blockchain**, QuickSafe ensures every shipment is tracked, verified, and securely recorded without the need for centralized oversight.
 
-Blockchain Supply chain management plays a critical role in ensuring efficient operations and maintaining consumer trust. This project focuses on developing and deploying a decentralized application (DApp) powered by blockchain technology to streamline supply chain management processes.
+> "Transparency, Trust & Traceability — All on the Blockchain."
 
-Our DApp utilizes the inherent transparency and immutability of blockchain to provide a secure and transparent platform for tracking goods at every stage of the supply chain. Leveraging smart contracts, the DApp automates various tasks such as verifying product authenticity, recording transactions, and managing inventory in real-time
+---
 
-## Project Overview
+## 🎓 Tech Stack
 
-![alt text](https://www.daulathussain.com/wp-content/uploads/2023/09/tracking.png)
+### 🚀 Blockchain & Smart Contracts
+- **Solidity**: Secure and efficient smart contract programming.
+- **Hardhat**: Smart contract compiler, deployer, and testing suite.
+- **Ethers.js**: JS library for Ethereum blockchain interaction.
+- **Web3Modal**: Enables seamless wallet connection (e.g., MetaMask).
 
-## Instruction
+### 🌐 Frontend
+- **Next.js & React**: Component-driven UI with blazing-fast SSR.
+- **Tailwind CSS**: Clean, utility-first CSS framework for responsive styling.
 
-Kindly follow the following Instructions to run the project in your system and install the necessary requirements
+### 💡 Future Enhancements
+- **Firebase (Planned)**: User authentication and persistent off-chain storage.
 
-- [Final Source Code](https://www.theblockchaincoders.com/sourceCode/supply-chain-management-project-source-code)
+---
 
-#### Setup Video
+## 🚀 Getting Started
 
-- [Final Code Setup video](https://youtu.be/cxKV3y3ZSnQ?si=NYPmVQ5j1hJjn3LK)
-
-```
-  WATCH: Setup & Demo Of Project
-  URL: https://youtu.be/cxKV3y3ZSnQ?si=NYPmVQ5j1hJjn3LK
-```
-
-#### Install Vs Code Editor
-
-```
-  GET: VsCode Editor
-  URL: https://code.visualstudio.com/download
-```
-
-#### NodeJs & NPM Version
-
-```
-  NodeJs: v18.12.1
-  NPM: 8.19.2
-  URL: https://nodejs.org/en/download
-  Video: https://youtu.be/PIR0oBVowXU?si=h8LThapvEyrVKufp
+### ✨ Clone the Repository
+```bash
+git clone https://github.com/Divyansh089/supply-chain-management.git
+cd supply-chain-management
 ```
 
-#### Clone Starter File
-
-```
-  GET: Project Starter File Download
-  URL: https://github.com/daulathussain/Airdrop-Crypto-Starter-File
+### ✨ Install Dependencies
+```bash
+npm install
 ```
 
-All you need to follow the complete project and follow the instructions which are explained in the tutorial by Daulat
-
-## Final Code Instruction
-
-If you download the final source code then you can follow the following instructions to run the Dapp successfully
-
-#### Setup Video
-
-```
-  WATCH: Setup & Demo Of Project
-  URL: https://youtu.be/cxKV3y3ZSnQ?si=NYPmVQ5j1hJjn3LK
+### ✨ Configure Environment
+Create a `.env` file for any environment-specific variables:
+```env
+# Example
+NEXT_PUBLIC_CONTRACT_ADDRESS=<your_contract_address>
+NEXT_PUBLIC_RPC_URL=https://ethereum-holesky.publicnode.com
 ```
 
-#### Final Source Code
-
-```
-  GET: Download the Final Source Code
-  URL: https://www.theblockchaincoders.com/sourceCode/supply-chain-management-project-source-code
+### ✨ Deploy Smart Contracts
+```bash
+npx hardhat run scripts/deploy.js --network holesky
 ```
 
-#### Install Vs Code Editor
-
-```
-  GET: VsCode Editor
-  URL: https://code.visualstudio.com/download
+### ✨ Run the Frontend App
+```bash
+npm run dev
 ```
 
-#### NodeJs & NPM Version
+### ✨ Connect Your Wallet
+Use MetaMask to connect and interact with the DApp on the **Holesky** testnet.
 
-```
-  NodeJs: v18.12.1
-  NPM: 8.19.2
-  URL: https://nodejs.org/en/download
-  VIDEO: https://youtu.be/PIR0oBVowXU?si=h8LThapvEyrVKufp
-```
+---
 
-#### Test Faucets
+## 👤 Author
+**Divyansh Patel**  
+GitHub: [Divyansh089](https://github.com/Divyansh089/supply-chain-management)
 
-You can visit these providers will help you with some free test faucets which you can transfer to your wallet address for deploying the contract
+---
 
-```
-  Get: Free Test Faucets
-  URL: https://www.theblockchaincoders.com/resource
-  URL: https://holesky-faucet.pk910.de/
-  URL: https://cloud.google.com/application/web3/faucet
-```
+## ✨ Vision
+QuickSafe empowers the logistics ecosystem by ensuring:
+- ✅ Real-time shipment tracking
+- ✅ Tamper-proof delivery records
+- ✅ Wallet-authenticated interactions
+- ✅ Scalable design for future integration with centralized databases
 
-#### RemixID
+> Building the future of logistics, one block at a time.
 
-We are using RemixID for deploying the contract and generation of the ABI in the project, but you can use any other tools like Hardhat, etc.
+---
 
-```
-  OPEN: RemixID
-  URL: https://remix-project.org
-```
+Give the repo a ⭐ if you find it interesting!
 
-#### RPC URL PROVIDER
+---
 
-```
-  OPEN: ANKT.COM
-  URL: https://www.ankr.com/rpc/?content=endpoints
-```
-
-## Important Links
-
-- [Get Pro Blockchain Developer Course](https://www.theblockchaincoders.com/pro-nft-marketplace)
-- [Support Creator](https://bit.ly/Support-Creator)
-- [All Projects Source Code](https://www.theblockchaincoders.com/SourceCode)
-
-## Authors
-
-- [@theblockchaincoders.com](https://www.theblockchaincoders.com/)
-- [@consultancy](https://www.theblockchaincoders.com/consultancy)
-- [@youtube](https://www.youtube.com/@daulathussain)
