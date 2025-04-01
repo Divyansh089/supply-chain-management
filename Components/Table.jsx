@@ -21,7 +21,7 @@ export default ({ setCreateShipmentModal , allShipmentsData}) => {
             Create Tracking
           </h3>
           <p className="text-gray-600 mt-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Easily manage and track your shipments with QuickSafe – your secure, fast, and transparent supply chain solution.
           </p>
         </div>
         <div className="mt-3 md:mt-8">
