@@ -3,7 +3,7 @@ import Web3Modal from "web3modal";
 import {ethers} from "ethers";
 
 //Internal Import
-import tracking from "../artifacts/contracts/Tracking.sol/Tracking.json";
+import tracking from "./Tracking.json";
 const ContractAddress = "0xf21d32Cf0a79c892a63844A0aAb35cfEcBEe7b1D";
 const ContractABI = tracking.abi;
 

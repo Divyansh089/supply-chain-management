@@ -5,7 +5,7 @@ async function main() {
     const { ethers } = require("hardhat");
   
     // Load the contract artifact (adjust the path if needed)
-    const artifact = require("../artifacts/contracts/Tracking.sol/Tracking.json");
+    const artifact = require("../Context/Tracking.json");
     const ContractABI = artifact.abi;
   
     // Update with your newly deployed contract address on localhost
